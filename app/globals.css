@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    cursor: default;
+  }
+
+  body {
+    background-color: var(--bg-primary, #0A0A0A);
+    color: var(--text-primary, #F5F0E8);
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--font-inter), sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #C9A84C;
+    color: #0A0A0A;
+  }
+
+  /* Custom gold dot cursor — desktop only */
+  @media (hover: hover) and (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* — Primary filled gold button — */
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 36px;
+    font-family: var(--font-montserrat), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: #C9A84C;
+    color: #0A0A0A;
+    border-radius: 2px;
+    border: 1px solid #C9A84C;
+  }
+  .btn-gold:hover {
+    background: #E8D5A3;
+    border-color: #E8D5A3;
+    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+  }
+
+  /* — Ghost / outline button — */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 36px;
+    font-family: var(--font-montserrat), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: #C9A84C;
+    border: 1px solid #C9A84C;
+    border-radius: 2px;
+  }
+  .btn-ghost:hover {
+    border-color: #C9A84C;
+    color: #C9A84C;
+  }
+
+  /* — Gold pill button (for nav CTA) — */
+  .btn-gold-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    font-family: var(--font-montserrat), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: #C9A84C;
+    color: #0A0A0A;
+    border-radius: 50px;
+  }
+  .btn-gold-pill:hover {
+    background: #E8D5A3;
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+  }
+
+  /* — Section label in gold caps — */
+  .section-label {
+    font-family: var(--font-montserrat), sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    color: #C9A84C;
+  }
+
+  /* — Large editorial serif headline — */
+  .section-headline {
+    font-family: var(--font-playfair), serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #F5F0E8;
+  }
+  @media (min-width: 768px) {
+    .section-headline {
+      font-size: 3.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-headline {
+      font-size: 4rem;
+    }
+  }
+
+  /* Gold horizontal rule separator */
+  .gold-rule {
+    width: 60px;
+    height: 1px;
+    background: #C9A84C;
+  }
+
+  .gold-rule-full {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #C9A84C30, transparent);
+  }
+
+  /* Glass panel for scrolled navbar */
+  .glass-nav {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  }
+
+  /* Fade-in animation for section reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Keep old classes for backward compatibility */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-cyan-brand hover:bg-cyan-dark transition-colors duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-brand;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sunset-orange hover:bg-sunset-yellow transition-colors duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sunset-orange;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-cyan-brand text-base font-medium rounded-md text-cyan-brand hover:bg-cyan-brand hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-brand;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Image blur-to-sharp reveal */
+  .img-reveal {
+    filter: blur(20px);
+    opacity: 0;
+    transition: filter 1s ease-out, opacity 0.8s ease-out;
+  }
+  .img-reveal.loaded {
+    filter: blur(0);
+    opacity: 1;
+  }
+}

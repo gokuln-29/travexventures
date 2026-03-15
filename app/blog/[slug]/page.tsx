@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SchemaMarkup } from '@/components/SchemaMarkup';
+
 import { ChevronRight, Calendar } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { blogs } from '@/data/allBlogs';
@@ -95,8 +95,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
     return (
         <article className="bg-earth-light min-h-screen py-24 px-4 font-sans">
-            <SchemaMarkup schema={articleSchema} />
-            <SchemaMarkup schema={breadcrumbSchema} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             <div className="max-w-4xl mx-auto">
                 <nav className="flex items-center text-sm font-medium text-navy-500 mb-8 max-w-4xl mx-auto">

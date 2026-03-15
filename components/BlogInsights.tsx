@@ -59,7 +59,7 @@ export default function BlogInsights() {
                     {/* Featured Article (full-width banner card) */}
                     <Link
                         href={`/blog/${featured.slug}`}
-                        className="reveal group relative overflow-hidden aspect-[4/5] lg:aspect-auto lg:row-span-2 flex items-end p-8 md:p-10"
+                        className="reveal group relative overflow-hidden aspect-4/5 lg:aspect-auto lg:row-span-2 flex items-end p-8 md:p-10"
                         style={{ borderRadius: '2px' }}
                     >
                         <Image
@@ -69,7 +69,7 @@ export default function BlogInsights() {
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             sizes="(max-width: 1024px) 100vw, 50vw"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-brand-black via-brand-black/40 to-transparent" />
                         <div className="relative z-10 w-full">
                             <div className="flex items-center gap-3 mb-4">
                                 <span className="font-accent text-[9px] uppercase tracking-[0.3em] text-brand-gold border border-brand-gold/30 px-3 py-1">
@@ -93,7 +93,7 @@ export default function BlogInsights() {
                             className="reveal group bg-brand-card overflow-hidden flex flex-col"
                             style={{ borderRadius: '2px' }}
                         >
-                            <div className="relative aspect-[16/9] overflow-hidden">
+                            <div className="relative aspect-video overflow-hidden">
                                 <Image
                                     src={article.image}
                                     alt={article.title}

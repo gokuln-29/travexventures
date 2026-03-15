@@ -106,8 +106,8 @@ const jsonLd = {
         addressRegion: 'Tamil Nadu',
         addressCountry: 'IN',
     },
-    telephone: ['+919500125257'],
-    email: 'info@travexventures.com',
+    telephone: ['+919500125257', '+919047033448'],
+    email: 'reservations@travexventures.com',
     sameAs: [
         'https://www.instagram.com/travexventures/',
         'https://www.facebook.com/travexventures/',

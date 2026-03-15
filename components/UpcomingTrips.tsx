@@ -41,7 +41,7 @@ export default function UpcomingTrips() {
     return (
         <section className="py-24 md:py-32 bg-brand-black relative">
             {/* Subtle decorative glow */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-gold/[0.02] rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-gold/2 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
                 {/* Section Header */}
@@ -69,7 +69,7 @@ export default function UpcomingTrips() {
                                     className="object-cover"
                                     sizes="(max-width: 1024px) 100vw, 60vw"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-r from-brand-card/60 via-transparent to-transparent lg:hidden" />
+                                <div className="absolute inset-0 bg-linear-to-r from-brand-card/60 via-transparent to-transparent lg:hidden" />
                             </div>
 
                             {/* Details — 40% width */}

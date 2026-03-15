@@ -9,8 +9,6 @@ const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Maldives', href: '/maldives-group-trip-from-india' },
     { name: 'Journeys', href: '/upcoming-trips' },
-    { name: 'Trips', href: '/trips' },
-    { name: 'Packages', href: '/packages' },
     { name: 'About', href: '/about' },
     { name: 'Insights', href: '/blog' },
 ];
@@ -34,21 +32,23 @@ export default function Navbar() {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-                    scrolled ? 'glass-nav' : 'bg-transparent'
-                }`}
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-nav' : 'bg-transparent'
+                    }`}
                 aria-label="Main navigation"
             >
                 <div className="px-6 sm:px-10 lg:px-16 mx-auto max-w-[1400px]">
                     <div className="flex items-center justify-between h-20 lg:h-24">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center shrink-0">
+                        <Link href="/" className="relative flex items-start h-full shrink-0 group">
+                            {/* Width spacer to maintain flex alignment */}
+                            <div className="w-24 lg:w-32" />
                             <Image
                                 src="/logo.png"
                                 alt="Travex Ventures"
-                                width={200}
-                                height={60}
-                                className="w-auto h-10 md:h-12 object-contain brightness-0 invert"
+                                width={500}
+                                height={500}
+                                quality={100}
+                                className="absolute top-2 lg:top-4 left-0 w-auto h-[120px] lg:h-[160px] object-contain drop-shadow-[0_0_3px_rgba(253,251,247,0.7)] hover:scale-105 transition-all duration-300"
                                 priority
                             />
                         </Link>
@@ -88,9 +88,8 @@ export default function Navbar() {
 
             {/* Mobile Full-Screen Overlay Menu */}
             <div
-                className={`fixed inset-0 z-[60] bg-brand-black transition-all duration-500 flex flex-col justify-center items-center ${
-                    isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                }`}
+                className={`fixed inset-0 z-60 bg-brand-black transition-all duration-500 flex flex-col justify-center items-center ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                    }`}
             >
                 {/* Close button */}
                 <button

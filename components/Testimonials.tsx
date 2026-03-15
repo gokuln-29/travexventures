@@ -57,7 +57,7 @@ export default function Testimonials() {
             onMouseLeave={() => setIsPaused(false)}
         >
             {/* Subtle decorative elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-gold/[0.015] rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand-gold/1.5 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-16 text-center reveal">
                 {/* Section Label */}
@@ -103,11 +103,10 @@ export default function Testimonials() {
                         <button
                             key={idx}
                             onClick={() => goTo(idx)}
-                            className={`transition-all duration-300 rounded-full ${
-                                idx === current
+                            className={`transition-all duration-300 rounded-full ${idx === current
                                     ? 'w-8 h-2 bg-brand-gold'
                                     : 'w-2 h-2 bg-brand-cream/20 hover:bg-brand-cream/40'
-                            }`}
+                                }`}
                             aria-label={`Go to testimonial ${idx + 1}`}
                         />
                     ))}

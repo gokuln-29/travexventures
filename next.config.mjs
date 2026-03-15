@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export', // Generates the static /out directory
+    // 'output: export' removed — static export does not support API routes.
+    // Use 'npm run build && npm run start' for production, or deploy to Vercel/a Node host.
     images: {
-        unoptimized: true, // Required for static export with Next.js Image component
+        unoptimized: true,
+        qualities: [75, 100],
     },
+    serverExternalPackages: ['nodemailer'], // Prevent Turbopack from bundling nodemailer
 };
 
 export default nextConfig;

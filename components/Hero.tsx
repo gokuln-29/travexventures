@@ -26,17 +26,16 @@ export default function Hero() {
             </video>
 
             {/* Dark overlay — 60% bottom-heavy gradient */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-brand-black/30 to-brand-black/80" />
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-black/50 via-transparent to-brand-black/30" />
+            <div className="absolute inset-0 bg-linear-to-b from-brand-black/40 via-brand-black/30 to-brand-black/80" />
+            <div className="absolute inset-0 bg-linear-to-r from-brand-black/50 via-transparent to-brand-black/30" />
 
             {/* Hero Content */}
             <div className="relative z-10 flex flex-col justify-center h-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
                 <div className="max-w-3xl">
                     {/* Headline */}
                     <h1
-                        className={`transition-all duration-1000 ease-out ${
-                            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`}
+                        className={`transition-all duration-1000 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
                     >
                         <span className="block font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[80px] text-brand-cream leading-[1.1] mb-2">
                             Extraordinary
@@ -48,23 +47,21 @@ export default function Hero() {
 
                     {/* Subtext */}
                     <p
-                        className={`mt-8 text-base sm:text-lg md:text-xl text-brand-cream/70 font-light max-w-xl leading-relaxed transition-all duration-1000 delay-300 ease-out ${
-                            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`}
+                        className={`mt-8 text-base sm:text-lg md:text-xl text-brand-cream/70 font-light max-w-xl leading-relaxed transition-all duration-1000 delay-300 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
                     >
                         Curated group journeys &amp; private escapes — crafted for those who seek more than a vacation.
                     </p>
 
                     {/* CTAs */}
                     <div
-                        className={`flex flex-col sm:flex-row gap-4 mt-10 transition-all duration-1000 delay-500 ease-out ${
-                            loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                        }`}
+                        className={`flex flex-col sm:flex-row gap-4 mt-10 transition-all duration-1000 delay-500 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                            }`}
                     >
                         <Link href="/maldives-group-trip-from-india" className="btn-gold flex items-center gap-2">
                             <span className="text-[14px]">🔥</span> Maldives Group Trip
                         </Link>
-                        <Link href="/trips" className="btn-ghost">
+                        <Link href="/upcoming-trips" className="btn-ghost">
                             Explore All Trips
                         </Link>
                     </div>
@@ -73,9 +70,8 @@ export default function Hero() {
 
             {/* Scroll Indicator */}
             <div
-                className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 transition-all duration-1000 delay-700 ${
-                    loaded ? 'opacity-100' : 'opacity-0'
-                }`}
+                className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 transition-all duration-1000 delay-700 ${loaded ? 'opacity-100' : 'opacity-0'
+                    }`}
             >
                 <span className="font-accent text-[9px] uppercase tracking-[0.35em] text-brand-cream/40">
                     Scroll
@@ -86,7 +82,7 @@ export default function Hero() {
             </div>
 
             {/* Bottom fade into next section */}
-            <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-brand-black to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 w-full h-40 bg-linear-to-t from-brand-black to-transparent z-10 pointer-events-none" />
         </section>
     );
 }

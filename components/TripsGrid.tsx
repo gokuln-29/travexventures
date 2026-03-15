@@ -56,7 +56,7 @@ export default function TripsGrid() {
                         <Link
                             key={idx}
                             href={pkg.href}
-                            className="reveal group relative overflow-hidden aspect-[4/5] md:aspect-[3/4] lg:aspect-square"
+                            className="reveal group relative overflow-hidden aspect-4/5 md:aspect-3/4 lg:aspect-square"
                             style={{ borderRadius: '2px' }}
                         >
                             {/* Full background image */}
@@ -69,7 +69,7 @@ export default function TripsGrid() {
                             />
 
                             {/* Default state overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-0" />
+                            <div className="absolute inset-0 bg-linear-to-t from-brand-black/80 via-brand-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-0" />
 
                             {/* Category Label — top-left, always visible */}
                             <span className="absolute top-6 left-6 z-10 font-accent text-[10px] uppercase tracking-[0.3em] text-brand-gold">
@@ -82,7 +82,7 @@ export default function TripsGrid() {
                             </h3>
 
                             {/* Hover overlay — slides up with description + CTA */}
-                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-gradient-to-t from-brand-black/90 via-brand-black/70 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                            <div className="absolute inset-0 z-10 flex flex-col justify-end p-6 bg-linear-to-t from-brand-black/90 via-brand-black/70 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                                 <p className="text-sm text-brand-cream/80 font-light mb-4 max-w-xs">
                                     {pkg.description}
                                 </p>

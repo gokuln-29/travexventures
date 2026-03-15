@@ -22,7 +22,7 @@ interface ArticleListProps {
 export default function ArticleList({ allArticles }: ArticleListProps) {
     const [displayCount, setDisplayCount] = useState(9);
     const [loading, setLoading] = useState(false);
-    
+
     const visibleArticles = allArticles.slice(0, displayCount);
     const hasMore = displayCount < allArticles.length;
 
@@ -40,16 +40,16 @@ export default function ArticleList({ allArticles }: ArticleListProps) {
             {/* 3-Column Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 reveal">
                 {visibleArticles.map((article, i) => (
-                    <Link 
-                        href={`/blog/${article.slug}`} 
+                    <Link
+                        href={`/blog/${article.slug}`}
                         key={`${article.slug}-${i}`}
                         className="group flex flex-col bg-brand-black border border-[rgba(201,168,76,0.05)] hover:border-[rgba(201,168,76,0.3)] rounded-[2px] overflow-hidden transition-all duration-300 shadow-xl"
                     >
-                        <div className="relative aspect-[4/3] w-full overflow-hidden">
-                             <Image 
-                                src={article.image} 
-                                alt={article.title} 
-                                fill 
+                        <div className="relative aspect-4/3 w-full overflow-hidden">
+                            <Image
+                                src={article.image}
+                                alt={article.title}
+                                fill
                                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, 33vw"
                             />
@@ -61,20 +61,20 @@ export default function ArticleList({ allArticles }: ArticleListProps) {
                             </div>
                             <div className="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition-colors duration-300" />
                         </div>
-                        
-                        <div className="p-6 md:p-8 flex flex-col flex-grow bg-gradient-to-b from-brand-card to-brand-black">
+
+                        <div className="p-6 md:p-8 flex flex-col grow bg-linear-to-b from-brand-card to-brand-black">
                             <h3 className="font-serif text-[22px] leading-tight text-brand-cream group-hover:text-brand-gold transition-colors duration-300 mb-4">
                                 {article.title}
                             </h3>
-                            <p className="text-brand-cream/60 font-light text-sm line-clamp-3 mb-8 flex-grow">
+                            <p className="text-brand-cream/60 font-light text-sm line-clamp-3 mb-8 grow">
                                 {article.excerpt}
                             </p>
-                            
+
                             <div className="mt-auto border-t border-brand-gold/10 pt-4 flex items-center justify-between">
                                 <span className="font-accent text-[9px] uppercase tracking-[0.15em] text-brand-cream/50">
                                     {article.author}
                                 </span>
-                                <span className="font-accent text-[8px] uppercase tracking-[0.1em] text-brand-muted">
+                                <span className="font-accent text-[8px] uppercase tracking-widest text-brand-muted">
                                     {article.date}
                                 </span>
                             </div>
@@ -85,8 +85,8 @@ export default function ArticleList({ allArticles }: ArticleListProps) {
 
             {hasMore ? (
                 <div className="flex justify-center mt-12 mb-12 lg:mb-0 reveal">
-                    <button 
-                        onClick={loadMore} 
+                    <button
+                        onClick={loadMore}
                         disabled={loading}
                         className={`btn-ghost px-12 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >

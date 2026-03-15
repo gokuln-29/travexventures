@@ -50,7 +50,7 @@ export default function CustomCursor() {
         <>
             {/* Main gold dot */}
             <div
-                className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
+                className="fixed top-0 left-0 z-9999 pointer-events-none mix-blend-difference"
                 style={{
                     transform: `translate(${pos.x - (hovering ? 16 : 5)}px, ${pos.y - (hovering ? 16 : 5)}px)`,
                     transition: 'transform 0.08s ease-out, width 0.2s, height 0.2s, opacity 0.2s',

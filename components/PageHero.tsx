@@ -31,7 +31,7 @@ export default function PageHero({ title, breadcrumbName, bgImage, subtext }: Pa
             />
 
             {/* Dark gradient overlay (bottom 70% opacity) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-brand-black/60 to-brand-black/30" />
+            <div className="absolute inset-0 bg-linear-to-t from-brand-black/90 via-brand-black/60 to-brand-black/30" />
 
             {/* Content */}
             <div className={`relative z-10 flex flex-col items-center text-center px-6 max-w-4xl transition-all duration-1000 delay-200 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -49,7 +49,7 @@ export default function PageHero({ title, breadcrumbName, bgImage, subtext }: Pa
 
                 {/* Thin animated gold underline */}
                 <div className="w-24 h-px bg-brand-gold relative overflow-hidden mb-6">
-                     <div className="absolute top-0 left-0 w-full h-full bg-white/50 -translate-x-full animate-[goldShimmer_3s_ease-in-out_infinite]" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-white/50 -translate-x-full animate-[goldShimmer_3s_ease-in-out_infinite]" />
                 </div>
 
                 {/* Subtext */}

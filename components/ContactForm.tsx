@@ -1,197 +1,149 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { CheckCircle2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
-import { sendGTMEvent } from '@next/third-parties/google';
 
-const contactSchema = z.object({
-    fullName: z.string().min(2, 'Name must be at least 2 characters'),
-    email: z.string().email('Please enter a valid email address'),
-    phoneNumber: z.string().min(10, 'Please enter a valid phone number'),
-    tripType: z.enum(['Group Trip', 'Honeymoon', 'General Inquiry'], {
-        message: 'Please select a valid trip type',
-    }),
-    message: z.string().min(10, 'Message must be at least 10 characters long'),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+type Status = 'idle' | 'loading' | 'success' | 'error';
 
 export default function ContactForm() {
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [status, setStatus] = useState<Status>('idle');
+    const [errorMsg, setErrorMsg] = useState('');
 
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors, isSubmitting },
-    } = useForm<ContactFormData>({
-        resolver: zodResolver(contactSchema),
-        defaultValues: {
-            tripType: 'General Inquiry',
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setStatus('loading');
+        setErrorMsg('');
+
+        const form = e.currentTarget;
+        const data = {
+            fullName:    (form.elements.namedItem('name')        as HTMLInputElement).value,
+            email:       (form.elements.namedItem('email')       as HTMLInputElement).value,
+            phone:       (form.elements.namedItem('phone')       as HTMLInputElement).value,
+            destination: (form.elements.namedItem('destination') as HTMLSelectElement).value,
+            dates:       (form.elements.namedItem('dates')       as HTMLInputElement).value,
+            groupSize:   (form.elements.namedItem('groupSize')   as HTMLInputElement).value,
+            message:     (form.elements.namedItem('message')     as HTMLTextAreaElement).value,
+        };
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            const json = await res.json();
+
+            if (!res.ok) {
+                throw new Error(json.error || 'Something went wrong. Please try again.');
+            }
+
+            setStatus('success');
+            form.reset();
+        } catch (err: unknown) {
+            setStatus('error');
+            setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
         }
-    });
+    }
 
-    const onSubmit = async (data: ContactFormData) => {
-        sendGTMEvent({ event: 'whatsapp_lead', lead_type: 'contact_form', trip_type: data.tripType });
-        const subject = encodeURIComponent(`[Travexventures Inquiry] ${data.tripType} — ${data.fullName}`);
-        const body = encodeURIComponent(
-            `Name: ${data.fullName}\nEmail: ${data.email}\nPhone: ${data.phoneNumber}\nTrip Type: ${data.tripType}\n\nMessage:\n${data.message}`
-        );
-        window.open(`mailto:reservations@travexventures.com?subject=${subject}&body=${body}`, '_self');
-        setIsSubmitted(true);
-        reset();
-    };
-
-    if (isSubmitted) {
+    if (status === 'success') {
         return (
-            <div className="glass-panel p-10 text-center animate-fade-in border-cyan-500/20 shadow-cyan-900/10">
-                <CheckCircle2 className="w-16 h-16 text-cyan-brand mx-auto mb-6" />
-                <h3 className="text-3xl font-bold text-navy-950 mb-3 block">Request Received!</h3>
-                <p className="text-navy-600 mb-8 max-w-md mx-auto">
-                    Thank you for reaching out to Travexventures. Your inquiry has been sent to{' '}
-                    <strong className="text-navy-900">reservations@travexventures.com</strong>. Our travel experts will get back to you within 24 hours.
-                </p>
+            <div className="flex flex-col items-center justify-center text-center py-20 gap-6">
+                <div className="w-16 h-16 rounded-full border border-brand-gold/40 flex items-center justify-center">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 className="font-serif text-2xl text-brand-cream mb-3">Enquiry Received</h3>
+                    <p className="text-brand-cream/60 font-light text-sm max-w-xs leading-relaxed">
+                        Thank you! Our travel experts will reach out within 24 hours.
+                    </p>
+                </div>
                 <button
-                    onClick={() => setIsSubmitted(false)}
-                    className="btn-outline border-navy-200 text-navy-800 hover:bg-navy-50 w-full sm:w-auto"
+                    onClick={() => setStatus('idle')}
+                    className="font-accent text-[10px] uppercase tracking-[0.25em] text-brand-muted hover:text-brand-gold transition-colors mt-2"
                 >
-                    Send Another Inquiry
+                    Submit another enquiry →
                 </button>
             </div>
         );
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 animate-slide-up bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-navy-50">
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Full Name */}
-                <div className="space-y-2">
-                    <label htmlFor="fullName" className="block text-sm font-semibold text-navy-900">
-                        Full Name
-                    </label>
-                    <input
-                        id="fullName"
-                        {...register('fullName')}
-                        className={`w-full px-4 py-3 rounded-lg border bg-earth-light/50 focus:bg-white transition-colors focus:outline-none focus:ring-2 ${errors.fullName ? 'border-sunset-orange focus:ring-sunset-orange/50' : 'border-navy-200 focus:ring-cyan-brand/50 focus:border-cyan-brand'
-                            }`}
-                        placeholder="Enter Your Full Name"
-                    />
-                    {errors.fullName && (
-                        <p className="flex items-center text-sm text-sunset-orange mt-1">
-                            <AlertCircle className="w-4 h-4 mr-1" />
-                            {errors.fullName.message}
-                        </p>
-                    )}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="name" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Full Name</label>
+                    <input type="text" id="name" name="name" required className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans" />
                 </div>
-
-                {/* Email Address */}
-                <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-semibold text-navy-900">
-                        Email Address
-                    </label>
-                    <input
-                        id="email"
-                        type="email"
-                        {...register('email')}
-                        className={`w-full px-4 py-3 rounded-lg border bg-earth-light/50 focus:bg-white transition-colors focus:outline-none focus:ring-2 ${errors.email ? 'border-sunset-orange focus:ring-sunset-orange/50' : 'border-navy-200 focus:ring-cyan-brand/50 focus:border-cyan-brand'
-                            }`}
-                        placeholder="Enter Your Email Address"
-                    />
-                    {errors.email && (
-                        <p className="flex items-center text-sm text-sunset-orange mt-1">
-                            <AlertCircle className="w-4 h-4 mr-1" />
-                            {errors.email.message}
-                        </p>
-                    )}
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Email Address</label>
+                    <input type="email" id="email" name="email" required className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans" />
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Phone Number */}
-                <div className="space-y-2">
-                    <label htmlFor="phoneNumber" className="block text-sm font-semibold text-navy-900">
-                        Phone Number
-                    </label>
-                    <input
-                        id="phoneNumber"
-                        {...register('phoneNumber')}
-                        className={`w-full px-4 py-3 rounded-lg border bg-earth-light/50 focus:bg-white transition-colors focus:outline-none focus:ring-2 ${errors.phoneNumber ? 'border-sunset-orange focus:ring-sunset-orange/50' : 'border-navy-200 focus:ring-cyan-brand/50 focus:border-cyan-brand'
-                            }`}
-                        placeholder="+91 95001 25257"
-                    />
-                    {errors.phoneNumber && (
-                        <p className="flex items-center text-sm text-sunset-orange mt-1">
-                            <AlertCircle className="w-4 h-4 mr-1" />
-                            {errors.phoneNumber.message}
-                        </p>
-                    )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="phone" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone" className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans" />
                 </div>
-
-                {/* Trip Type Dropdown */}
-                <div className="space-y-2">
-                    <label htmlFor="tripType" className="block text-sm font-semibold text-navy-900">
-                        Nature of Inquiry
-                    </label>
-                    <select
-                        id="tripType"
-                        {...register('tripType')}
-                        className={`w-full px-4 py-3 rounded-lg border bg-earth-light/50 focus:bg-white transition-colors focus:outline-none focus:ring-2 appearance-none ${errors.tripType ? 'border-sunset-orange focus:ring-sunset-orange/50' : 'border-navy-200 focus:ring-cyan-brand/50 focus:border-cyan-brand'
-                            }`}
-                    >
-                        <option value="General Inquiry">General Inquiry</option>
-                        <option value="Group Trip">Group Trip</option>
-                        <option value="Honeymoon">Honeymoon</option>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="destination" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Destination of Interest</label>
+                    <select id="destination" name="destination" required defaultValue="" className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans [&>option]:bg-brand-card">
+                        <option value="" disabled>Select an option</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Other">Other / Not Sure Yet</option>
                     </select>
-                    {errors.tripType && (
-                        <p className="flex items-center text-sm text-sunset-orange mt-1">
-                            <AlertCircle className="w-4 h-4 mr-1" />
-                            {errors.tripType.message}
-                        </p>
-                    )}
                 </div>
             </div>
 
-            {/* Message Textarea */}
-            <div className="space-y-2">
-                <label htmlFor="message" className="block text-sm font-semibold text-navy-900">
-                    How can we help you plan?
-                </label>
-                <textarea
-                    id="message"
-                    rows={5}
-                    {...register('message')}
-                    className={`w-full px-4 py-3 rounded-lg border bg-earth-light/50 focus:bg-white transition-colors focus:outline-none focus:ring-2 resize-none ${errors.message ? 'border-sunset-orange focus:ring-sunset-orange/50' : 'border-navy-200 focus:ring-cyan-brand/50 focus:border-cyan-brand'
-                        }`}
-                    placeholder="Tell us about your dream destination, budget, or any specific dates..."
-                />
-                {errors.message && (
-                    <p className="flex items-center text-sm text-sunset-orange mt-1">
-                        <AlertCircle className="w-4 h-4 mr-1" />
-                        {errors.message.message}
-                    </p>
-                )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="dates" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Travel Dates / Month</label>
+                    <input type="text" id="dates" name="dates" className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans" />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="groupSize" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Group Size</label>
+                    <input type="number" id="groupSize" name="groupSize" min="1" className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans" />
+                </div>
             </div>
+
+            <div className="flex flex-col gap-2">
+                <label htmlFor="message" className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-cream/60">Your Vision / Message</label>
+                <textarea id="message" name="message" rows={4} required className="bg-transparent border-b border-white/10 text-brand-cream py-3 focus:outline-none focus:border-brand-gold transition-colors text-sm md:text-base font-light font-sans resize-y min-h-[100px]" />
+            </div>
+
+            {status === 'error' && (
+                <p className="text-red-400/80 text-sm font-light text-center -mt-2">
+                    ⚠ {errorMsg}
+                </p>
+            )}
 
             <button
                 type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full py-4 text-lg mt-8 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                disabled={status === 'loading'}
+                className="btn-gold w-full mt-4 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-                {isSubmitting ? (
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                ) : null}
-                {isSubmitting ? 'Sending Request...' : 'Submit Inquiry'}
+                {status === 'loading' ? (
+                    <>
+                        <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" strokeLinecap="round" />
+                        </svg>
+                        Sending…
+                    </>
+                ) : (
+                    <>
+                        Send My Enquiry
+                        <svg width="18" height="10" viewBox="0 0 16 8" fill="none" className="transition-transform duration-300">
+                            <path d="M0 4H14M14 4L10.5 0.5M14 4L10.5 7.5" stroke="currentColor" strokeWidth="1" />
+                        </svg>
+                    </>
+                )}
             </button>
 
-            <p className="text-xs text-center text-navy-400 mt-6 max-w-md mx-auto">
-                Your inquiry will be sent to <strong>reservations@travexventures.com</strong>. By submitting this form, you agree to Travexventures&apos; Privacy Policy.
+            <p className="text-center text-brand-cream/40 font-light text-sm italic mt-2">
+                Our travel experts will respond to your inquiry within 24 hours.
             </p>
         </form>
     );

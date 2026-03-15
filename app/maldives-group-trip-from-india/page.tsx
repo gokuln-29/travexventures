@@ -49,31 +49,31 @@ const itinerary = [
 export default function MaldivesTripPage() {
     return (
         <div className="bg-brand-black min-h-screen relative">
-            
+
             {/* HERO SECTION */}
             <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-                <Image 
-                    src="/upcoming_trips/poster-2.jpg" 
-                    alt="Maldives Hanifaru Bay" 
-                    fill 
+                <Image
+                    src="/upcoming_trips/poster-2.jpg"
+                    alt="Maldives Hanifaru Bay"
+                    fill
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black/95 via-brand-black/60 to-brand-black/20" />
+                <div className="absolute inset-0 bg-linear-to-t from-brand-black/95 via-brand-black/60 to-brand-black/20" />
 
                 <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mt-20">
                     <span className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-black bg-brand-gold px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(201,168,76,0.5)] mb-8 flex items-center gap-2 font-semibold">
                         <span className="text-red-600 text-[12px]">🔥</span> LIMITED SPOTS — JUNE 2026
                     </span>
-                    
+
                     <h1 className="font-serif text-5xl sm:text-6xl md:text-[80px] text-brand-cream leading-tight mb-6 drop-shadow-2xl">
                         Maldives: <em className="italic text-brand-gold">Hanifaru Bay</em>
                     </h1>
-                    
+
                     <p className="text-brand-cream/80 font-light text-xl md:text-2xl mb-12 max-w-3xl">
                         The World&apos;s Greatest Manta Ray Gathering
                     </p>
-                    
+
                     <div className="flex flex-col sm:flex-row items-center gap-6">
                         <Link href="/contact" className="btn-gold py-4 px-10 text-[11px] w-full sm:w-auto text-center">
                             Book Your Spot Now
@@ -87,12 +87,12 @@ export default function MaldivesTripPage() {
             </section>
 
             <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row gap-16 lg:gap-24 relative py-20">
-                
+
                 {/* Main Content Area (Left 70%) */}
                 <div className="w-full lg:w-[65%] xl:w-[70%] flex flex-col gap-24 font-light">
-                    
+
                     {/* 1. Trip Snapshot Bar */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-10 border-y border-[rgba(201,168,76,0.15)] bg-gradient-to-r from-[rgba(201,168,76,0.05)] to-transparent px-8 rounded-[2px] reveal">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-10 border-y border-[rgba(201,168,76,0.15)] bg-linear-to-r from-[rgba(201,168,76,0.05)] to-transparent px-8 rounded-[2px] reveal">
                         <div className="flex flex-col gap-2">
                             <Calendar className="w-6 h-6 text-brand-gold mb-1" />
                             <span className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-muted">Dates</span>
@@ -106,7 +106,7 @@ export default function MaldivesTripPage() {
                         <div className="flex flex-col gap-2">
                             <Users className="w-6 h-6 text-brand-gold mb-1" />
                             <span className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-muted">Group Size</span>
-                            <span className="font-serif text-xl text-brand-cream">Max 12 People</span>
+                            <span className="font-serif text-xl text-brand-cream">Max 22 People</span>
                         </div>
                         <div className="flex flex-col gap-2">
                             <MapPin className="w-6 h-6 text-brand-gold mb-1" />
@@ -121,7 +121,7 @@ export default function MaldivesTripPage() {
                         <h2 className="font-serif text-4xl lg:text-[44px] text-brand-cream leading-tight mb-12">
                             Experience the extraordinary without the crowds.
                         </h2>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div className="bg-brand-card p-8 border border-[rgba(201,168,76,0.1)] rounded-[2px] hover:border-brand-gold/30 transition-colors">
                                 <div className="w-12 h-12 rounded-full border border-brand-gold/40 flex items-center justify-center mb-6">
@@ -153,20 +153,20 @@ export default function MaldivesTripPage() {
                         <h2 className="font-serif text-4xl lg:text-[44px] text-brand-cream leading-tight mb-16">
                             Day-by-Day Itinerary
                         </h2>
-                        
+
                         <div className="flex flex-col gap-12 relative">
                             {/* Gold vertical line connecting icons */}
-                            <div className="absolute left-6 top-6 bottom-12 w-px bg-gradient-to-b from-brand-gold via-brand-gold/20 to-transparent shadow-[0_0_10px_rgba(201,168,76,0.5)] hidden md:block" />
-                            
+                            <div className="absolute left-6 top-6 bottom-12 w-px bg-linear-to-b from-brand-gold via-brand-gold/20 to-transparent shadow-[0_0_10px_rgba(201,168,76,0.5)] hidden md:block" />
+
                             {itinerary.map((day, i) => (
                                 <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-12 relative group z-10 w-full">
                                     {/* Number Circle */}
-                                    <div className="w-12 h-12 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center shrink-0 z-10 hidden md:flex group-hover:bg-brand-gold transition-colors duration-500 shadow-xl">
+                                    <div className="w-12 h-12 rounded-full bg-brand-black border-2 border-brand-gold flex items-center justify-center shrink-0 z-10 md:flex group-hover:bg-brand-gold transition-colors duration-500 shadow-xl">
                                         <span className="font-serif text-lg text-brand-cream group-hover:text-brand-black transition-colors">
                                             {day.day}
                                         </span>
                                     </div>
-                                    
+
                                     {/* Day Content */}
                                     <div className="flex flex-col lg:flex-row gap-8 bg-brand-card p-8 border border-[rgba(201,168,76,0.1)] hover:border-brand-gold/30 transition-colors w-full rounded-[2px] shadow-lg">
                                         <div className="flex-1">
@@ -208,7 +208,7 @@ export default function MaldivesTripPage() {
                                 ))}
                             </ul>
                         </div>
-                        
+
                         <div className="bg-[#111111] p-10 border border-white/5 relative overflow-hidden rounded-[2px]">
                             <h3 className="font-serif text-3xl text-brand-muted mb-8">What&apos;s Excluded</h3>
                             <ul className="flex flex-col gap-5">
@@ -253,10 +253,10 @@ export default function MaldivesTripPage() {
                         {/* Price Summary Card */}
                         <div className="bg-brand-card p-8 border border-[rgba(201,168,76,0.3)] shadow-[0_20px_40px_rgba(0,0,0,0.6)] rounded-[2px]">
                             <div className="font-accent text-[10px] uppercase tracking-[0.3em] text-brand-gold mb-4 text-center">June 24-28, 2026</div>
-                            <h3 className="font-serif text-4xl text-brand-cream text-center mb-6">₹1,29,000 <span className="text-lg text-brand-muted font-light">/ pp</span></h3>
-                            
-                            <div className="h-px w-full bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent mb-6" />
-                            
+                            <h3 className="font-serif text-4xl text-brand-cream text-center mb-6">₹90,000 <span className="text-lg text-brand-muted font-light">/ pp</span></h3>
+
+                            <div className="h-px w-full bg-linear-to-r from-transparent via-brand-gold/30 to-transparent mb-6" />
+
                             <ul className="flex flex-col gap-4 mb-8">
                                 <li className="flex justify-between items-center text-sm">
                                     <span className="text-brand-cream/60 font-light">Deposit Required:</span>
@@ -264,13 +264,13 @@ export default function MaldivesTripPage() {
                                 </li>
                                 <li className="flex justify-between items-center text-sm">
                                     <span className="text-brand-cream/60 font-light">Availability:</span>
-                                    <span className="text-amber-500 font-medium tracking-wide">4 Spots Left</span>
+                                    <span className="text-amber-500 font-medium tracking-wide">8 Spots Left</span>
                                 </li>
                             </ul>
 
-                            <button className="btn-gold w-full text-center flex justify-center py-4 text-[11px] mb-4">
+                            <Link href="/contact" className="btn-gold w-full text-center flex justify-center py-4 text-[11px] mb-4">
                                 Secure Your Spot
-                            </button>
+                            </Link>
                             <p className="text-center text-[11px] text-brand-muted font-light italic">
                                 Fully refundable for 14 days after booking.
                             </p>
@@ -280,7 +280,7 @@ export default function MaldivesTripPage() {
                         <div className="bg-[#111111] p-8 border border-white/5 text-center flex flex-col items-center gap-4 rounded-[2px]">
                             <h4 className="font-serif text-2xl text-brand-cream">Have Questions?</h4>
                             <p className="text-brand-cream/60 text-sm font-light leading-relaxed">Chat with our Maldives experts to see if this trip is right for you.</p>
-                            <a href="https://wa.me/919500125257" target="_blank" rel="noopener noreferrer" className="btn-ghost flex items-center justify-center gap-2 w-full mt-2">
+                            <a href="https://wa.me/919047033448?text=Hi%2C%20I'd%20like%20to%20know%20more%20about%20the%20Maldives%20trip!" target="_blank" rel="noopener noreferrer" className="btn-ghost flex items-center justify-center gap-2 w-full mt-2">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-green-500">
                                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                 </svg>
@@ -295,17 +295,17 @@ export default function MaldivesTripPage() {
             <section className="relative py-40 overflow-hidden reveal">
                 <Image src="/Trips/3.png" alt="Maldives Ocean" fill className="object-cover" />
                 <div className="absolute inset-0 bg-brand-black/80" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-brand-black to-transparent" />
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
                     <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-brand-cream leading-tight mb-8">
-                        Your Maldives Adventure is <br/><em className="text-brand-gold italic">One Click Away</em>
+                        Your Maldives Adventure is <br /><em className="text-brand-gold italic">One Click Away</em>
                     </h2>
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-12">
                         <Link href="/contact" className="btn-gold py-4 px-12 text-[11px] w-full sm:w-auto text-center">Book Now</Link>
                     </div>
                 </div>
             </section>
-            
+
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -326,7 +326,7 @@ export default function MaldivesTripPage() {
                         offers: {
                             '@type': 'Offer',
                             priceCurrency: 'INR',
-                            price: 129000,
+                            price: '90,000',
                             availability: 'https://schema.org/LimitedAvailability',
                             url: 'https://travexventures.com/maldives-group-trip-from-india'
                         }

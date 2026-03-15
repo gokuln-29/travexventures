@@ -4,14 +4,14 @@ export default function Features() {
     return (
         <section id="about" className="py-24 md:py-32 bg-brand-black relative overflow-hidden">
             {/* Subtle decorative glow */}
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-gold/[0.02] rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-gold/2 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                     {/* Left — Cinematic Portrait */}
                     <div className="reveal relative">
-                        <div className="relative overflow-hidden aspect-[3/4]" style={{ borderRadius: '2px' }}>
+                        <div className="relative overflow-hidden aspect-3/4" style={{ borderRadius: '2px' }}>
                             <Image
                                 src="/founder.png"
                                 alt="Karthikeyan — Founder of Travex Ventures, luxury travel expert with 15+ years in hospitality"
@@ -20,7 +20,7 @@ export default function Features() {
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                             {/* Subtle gradient overlay at bottom */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/40 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-t from-brand-black/40 via-transparent to-transparent" />
                         </div>
                     </div>
 
@@ -53,7 +53,7 @@ export default function Features() {
                         </p>
 
                         {/* Stats Row */}
-                        <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/[0.06]">
+                        <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/6">
                             <div>
                                 <span className="block font-serif text-3xl md:text-4xl text-brand-gold mb-1">15+</span>
                                 <span className="font-accent text-[9px] uppercase tracking-[0.2em] text-brand-muted">

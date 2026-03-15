@@ -5,8 +5,6 @@ const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Maldives', href: '/maldives-group-trip-from-india' },
     { name: 'Journeys', href: '/upcoming-trips' },
-    { name: 'Trips', href: '/trips' },
-    { name: 'Packages', href: '/packages' },
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
@@ -20,13 +18,16 @@ export default function Footer() {
             <div className="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
                 {/* Logo + divider */}
                 <div className="flex flex-col items-center mb-12">
-                    <Image
-                        src="/logo.png"
-                        alt="Travex Ventures"
-                        width={180}
-                        height={54}
-                        className="w-auto h-10 object-contain brightness-0 invert mb-8"
-                    />
+                    <Link href="/" className="relative group mb-8">
+                        <Image
+                            src="/logo.png"
+                            alt="Travex Ventures"
+                            width={500}
+                            height={500}
+                            quality={100}
+                            className="w-auto h-20 md:h-28 object-contain drop-shadow-[0_0_3px_rgba(253,251,247,0.7)] hover:scale-105 transition-all duration-300 relative z-10"
+                        />
+                    </Link>
                     <div className="gold-rule-full" />
                 </div>
 

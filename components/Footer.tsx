@@ -1,5 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import AnimatedWhatsAppIcon from './AnimatedWhatsAppIcon';
+import AnimatedInstagramIcon from './AnimatedInstagramIcon';
+import AnimatedFacebookIcon from './AnimatedFacebookIcon';
+import AnimatedEmailIcon from './AnimatedEmailIcon';
 
 const quickLinks = [
     { name: 'Home', href: '/' },
@@ -44,7 +48,7 @@ export default function Footer() {
                     ))}
                 </div>
 
-                {/* Social Icons — minimal line-art style */}
+                {/* Social Icons — animated style */}
                 <div className="flex justify-center gap-6 mb-12">
                     <a
                         href="https://www.instagram.com/travexventures/"
@@ -53,11 +57,7 @@ export default function Footer() {
                         className="text-brand-muted hover:text-brand-gold transition-colors duration-300"
                         aria-label="Instagram"
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" />
-                            <circle cx="12" cy="12" r="5" />
-                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                        </svg>
+                        <AnimatedInstagramIcon size={52} />
                     </a>
                     <a
                         href="https://www.facebook.com/travexventures/"
@@ -66,19 +66,14 @@ export default function Footer() {
                         className="text-brand-muted hover:text-brand-gold transition-colors duration-300"
                         aria-label="Facebook"
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                        </svg>
+                        <AnimatedFacebookIcon size={52} />
                     </a>
                     <a
                         href="mailto:info@travexventures.com"
                         className="text-brand-muted hover:text-brand-gold transition-colors duration-300"
                         aria-label="Email"
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
-                        </svg>
+                        <AnimatedEmailIcon size={52} />
                     </a>
                     <a
                         href="https://wa.me/919500125257"
@@ -87,9 +82,7 @@ export default function Footer() {
                         className="text-brand-muted hover:text-brand-gold transition-colors duration-300"
                         aria-label="WhatsApp"
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-                        </svg>
+                        <AnimatedWhatsAppIcon size={52} />
                     </a>
                 </div>
 

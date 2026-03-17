@@ -78,7 +78,7 @@ export default function MaldivesTripPage() {
                         <Link href="/contact" className="btn-gold py-4 px-10 text-[11px] w-full sm:w-auto text-center">
                             Book Your Spot Now
                         </Link>
-                        <a href="#" className="btn-ghost py-4 px-8 text-[11px] flex items-center gap-3 w-full sm:w-auto justify-center group">
+                        <a href="/maldives-itinerary.pdf" download className="btn-ghost py-4 px-8 text-[11px] flex items-center gap-3 w-full sm:w-auto justify-center group">
                             <Download className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
                             Download Itinerary PDF
                         </a>

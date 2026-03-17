@@ -5,25 +5,31 @@ import Link from 'next/link';
 
 export default function Hero() {
     const [loaded, setLoaded] = useState(false);
+    const [imageIndex, setImageIndex] = useState(0);
+    const images = ['/banner/one.jpg', '/banner/two.jpg', '/banner/three.jpg', '/banner/four.jpg'];
 
     useEffect(() => {
         const timer = setTimeout(() => setLoaded(true), 200);
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        const imageInterval = setInterval(() => {
+            setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 1500);
+        return () => clearInterval(imageInterval);
+    }, []);
+
     return (
         <section id="hero" className="relative h-screen min-h-[700px] overflow-hidden bg-brand-black">
             {/* Background Video */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-                poster="/banner/one.jpg"
-            >
-                <source src="/video.webm" type="video/webm" />
-            </video>
+            <div className="absolute inset-0 w-full h-full overflow-hidden">
+                <img
+                    src={images[imageIndex]}
+                    alt="Hero Background"
+                    className="w-full h-full object-cover transition-opacity duration-1000"
+                />
+            </div>
 
             {/* Dark overlay — 60% bottom-heavy gradient */}
             <div className="absolute inset-0 bg-linear-to-b from-brand-black/40 via-brand-black/30 to-brand-black/80" />
@@ -77,7 +83,7 @@ export default function Hero() {
                     Scroll
                 </span>
                 <div className="w-px h-8 bg-brand-cream/20 relative overflow-hidden">
-                    <div className="w-px h-3 bg-brand-gold animate-scroll-line absolute top-0 left-0" />
+                    <div className="w-px h-3 bg-brand-gold absolute top-0 left-0 animate-pulse" style={{ animation: 'scroll-line 1.5s infinite' }} />
                 </div>
             </div>
 

@@ -23,15 +23,46 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
 
+    /**
+     * Blog Post Metadata with Open Graph & Twitter Cards
+     * 
+     * Test with:
+     * - Facebook: https://developers.facebook.com/tools/debug/
+     * - Twitter: https://cards-dev.twitter.com/validator
+     * - Lighthouse: npx lighthouse https://travexventures.com/blog/[slug]
+     */
     return {
         title: `${post.title} | Travex Ventures`,
         description: post.description,
         keywords: post.keywords,
+        alternates: {
+            canonical: `https://travexventures.com/blog/${slug}`,
+        },
         openGraph: {
             title: post.title,
             description: post.description,
-            images: [post.featuredImage],
+            url: `https://travexventures.com/blog/${slug}`,
             type: 'article',
+            images: [
+                {
+                    url: post.featuredImage,
+                    width: 1200,
+                    height: 630,
+                    alt: `${post.title} - Travex Ventures travel guide`,
+                    type: 'image/jpeg',
+                },
+            ],
+            publishedTime: '2026-03-12',
+            authors: ['Travex Ventures'],
+            section: 'Travel Guides',
+            tags: post.keywords,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.description,
+            images: [post.featuredImage],
+            creator: '@travexventures',
         },
     };
 }

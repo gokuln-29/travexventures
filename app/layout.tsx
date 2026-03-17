@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     },
     description:
         'Curated luxury group adventures & private honeymoon escapes to the Maldives and Sri Lanka. Bespoke travel for those who seek extraordinary experiences.',
-    metadataBase: new URL('https://travexventures.com'),
+    metadataBase: new URL('https://travexventures.vercel.app'),
     icons: {
         icon: '/fav.ico',
     },
@@ -74,10 +74,11 @@ export const metadata: Metadata = {
         siteName: 'Travex Ventures',
         images: [
             {
-                url: '/og-image.jpg',
+                url: '/og-default.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Travex Ventures — Luxury Group Adventures & Honeymoons',
+                alt: 'Travex Ventures — Luxury Maldives & Sri Lanka Group Adventures',
+                type: 'image/jpeg',
             },
         ],
         locale: 'en_IN',
@@ -88,6 +89,8 @@ export const metadata: Metadata = {
         title: 'Travex Ventures | Luxury Maldives & Sri Lanka Journeys from India',
         description:
             'Curated luxury group adventures & private honeymoon escapes to the Maldives and Sri Lanka. Bespoke travel for those who seek extraordinary experiences.',
+        images: ['/og-default.jpg'],
+        creator: '@travexventures',
     },
 };
 

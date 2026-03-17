@@ -6,12 +6,40 @@ import CTASection from '@/components/CTASection';
 import SchemaScript from '@/components/SchemaScript';
 
 export const metadata: Metadata = {
-    title: 'Maldives Group Trip from India 2026 — Hanifaru Bay Manta Rays | Travexventures',
+    title: 'Maldives Group Trip 2026 — Hanifaru Bay Manta Rays | Travex Ventures',
     description: 'Join Travexventures\' exclusive Maldives group trip from India — June 2026. Snorkel with manta rays at Hanifaru Bay UNESCO Reserve, Baa Atoll. Limited spots. Book now.',
     keywords: 'maldives group trip from india, maldives trip june 2026, hanifaru bay manta ray trip, baa atoll maldives, maldives package from chennai',
     alternates: {
         canonical: 'https://travexventures.com/maldives-group-trip-from-india'
-    }
+    },
+    /**
+     * Open Graph metadata for social sharing
+     * 
+     * Test with:
+     * - Facebook: https://developers.facebook.com/tools/debug/
+     * - Twitter: https://cards-dev.twitter.com/validator
+     */
+    openGraph: {
+        title: 'Maldives Group Trip 2026 — Hanifaru Bay Manta Ray Expedition',
+        description: 'Experience the world\'s greatest manta ray gathering at Hanifaru Bay UNESCO Biosphere Reserve. 5-day luxury trip from India with marine biologist guide, private dhoni, sandbank picnic, and authentic island culture.',
+        url: 'https://travexventures.com/maldives-group-trip-from-india',
+        type: 'website',
+        images: [
+            {
+                url: '/upcoming_trips/poster-2.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Maldives Hanifaru Bay manta ray snorkeling experience with crystal clear turquoise waters',
+                type: 'image/jpeg',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Maldives Group Trip 2026 — Hanifaru Bay Manta Rays',
+        description: 'Experience the world\'s greatest manta ray gathering. 5-day luxury trip from India with marine biologist, private dhoni, sandbank picnic.',
+        images: ['/upcoming_trips/poster-2.jpg'],
+    },
 };
 
 const itinerary = [

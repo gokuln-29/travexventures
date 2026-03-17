@@ -6,6 +6,43 @@ import Testimonials from '@/components/Testimonials';
 import BlogInsights from '@/components/BlogInsights';
 import CTASection from '@/components/CTASection';
 import SchemaScript from '@/components/SchemaScript';
+import type { Metadata } from 'next';
+
+/**
+ * Homepage Metadata for Open Graph & Twitter Cards
+ * 
+ * Test with:
+ * - Facebook: https://developers.facebook.com/tools/debug/
+ * - Twitter: https://cards-dev.twitter.com/validator
+ */
+export const metadata: Metadata = {
+    title: 'Luxury Maldives & Sri Lanka Trips from India | Travex Ventures',
+    description:
+        'Curated luxury group journeys and private escapes to the Maldives and Sri Lanka. Book exclusive Maldives manta ray trips, sandbank adventures, and cultural experiences.',
+    openGraph: {
+        title: 'Luxury Maldives & Sri Lanka Trips from India | Travex Ventures',
+        description:
+            'Curated luxury group journeys and private escapes. Experience Maldives manta rays, sandbank picnics, and Sri Lanka adventures.',
+        url: 'https://travexventures.com',
+        type: 'website',
+        images: [
+            {
+                url: '/banner/one.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Travex Ventures luxury Maldives group trip with manta rays and crystal clear waters',
+                type: 'image/jpeg',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Luxury Maldives & Sri Lanka Trips from India | Travex Ventures',
+        description:
+            'Curated luxury group journeys and private escapes. Experience Maldives manta rays, sandbank picnics, and Sri Lanka adventures.',
+        images: ['/banner/one.jpg'],
+    },
+};
 
 export default function Home() {
     const travelAgencySchema = {

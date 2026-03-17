@@ -274,9 +274,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                             <h4 className="font-bold text-cyan-brand mb-2 group-hover:underline">Maldives Group Trips →</h4>
                             <p className="text-sm text-navy-600">Discover our 4N/5D highly affordable Maldives packages including flights, manta ray snorkeling, and half-board meals.</p>
                         </Link>
-                        <Link href="/packages/sri-lanka" className="bg-white p-6 rounded-2xl shadow-sm border border-navy-50 hover:shadow-md transition-shadow group">
-                            <h4 className="font-bold text-cyan-brand mb-2 group-hover:underline">Sri Lanka Packages →</h4>
-                            <p className="text-sm text-navy-600">Explore tea plantations, wildlife safaris, and train journeys with our carefully curated Sri Lankan trips.</p>
+                        <Link href="/contact" className="bg-white p-6 rounded-2xl shadow-sm border border-navy-50 hover:shadow-md transition-shadow group">
+                            <h4 className="font-bold text-cyan-brand mb-2 group-hover:underline">Plan Your Sri Lanka Trip →</h4>
+                            <p className="text-sm text-navy-600">Design your perfect Sri Lanka adventure with our travel experts. Explore tea plantations, wildlife safaris, and scenic train journeys.</p>
                         </Link>
                     </div>
                 </div>

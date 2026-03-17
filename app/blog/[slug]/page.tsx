@@ -23,6 +23,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         };
     }
 
+    // Custom meta descriptions for specific blog posts (SEO-optimized with keywords & CTAs)
+    const customDescriptions: { [key: string]: string } = {
+        'best-maldives-trip-from-india-complete-travel-guide': 'Complete Maldives trip guide for Indian travelers. Expert advice on flights, visas, activities, accommodation & budgeting for your perfect escape.',
+        'hanifaru-bay-manta-ray-experience-guide': 'Experience Hanifaru Bay\'s manta ray snorkeling in the Maldives. Learn best diving spots, seasons & tips for an unforgettable marine adventure.',
+        'sri-lanka-travel-guide-for-indian-travelers': 'Discover Sri Lanka travel itineraries from India. Explore beaches, culture, wildlife & tea gardens with expert recommendations from our guides.',
+    };
+
     /**
      * Blog Post Metadata with Open Graph & Twitter Cards
      * 
@@ -31,16 +38,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
      * - Twitter: https://cards-dev.twitter.com/validator
      * - Lighthouse: npx lighthouse https://travexventures.com/blog/[slug]
      */
+    const metaDescription = customDescriptions[slug] || post.description;
+
     return {
         title: `${post.title} | Travex Ventures`,
-        description: post.description,
+        description: metaDescription,
         keywords: post.keywords,
         alternates: {
             canonical: `https://travexventures.com/blog/${slug}`,
         },
         openGraph: {
             title: post.title,
-            description: post.description,
+            description: metaDescription,
             url: `https://travexventures.com/blog/${slug}`,
             type: 'article',
             images: [
@@ -60,7 +69,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         twitter: {
             card: 'summary_large_image',
             title: post.title,
-            description: post.description,
+            description: metaDescription,
             images: [post.featuredImage],
             creator: '@travexventures',
         },

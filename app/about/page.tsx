@@ -7,7 +7,7 @@ import CTASection from '@/components/CTASection';
 
 export const metadata: Metadata = {
     title: 'About Travexventures | Luxury Travel Agency',
-    description: 'Learn about Karthikeyan and the vision behind Travexventures. We craft travel experiences that transcend the ordinary.',
+    description: 'Travex Ventures: India\'s premium luxury travel company. Curating unforgettable Maldives & Sri Lanka journeys. Plan your adventure with us today.',
     alternates: {
         canonical: 'https://travexventures.com/about'
     }

@@ -6,8 +6,8 @@ import CTASection from '@/components/CTASection';
 import SchemaScript from '@/components/SchemaScript';
 
 export const metadata: Metadata = {
-    title: 'Maldives Group Trip 2026 — Hanifaru Bay Manta Rays | Travex Ventures',
-    description: 'Join Travexventures\' exclusive Maldives group trip from India — June 2026. Snorkel with manta rays at Hanifaru Bay UNESCO Reserve, Baa Atoll. Limited spots. Book now.',
+    title: 'Maldives Group Trip 2026 | Hanifaru Bay Manta Rays',
+    description: 'Join our Maldives group trip from India 2026 with manta ray expeditions, overwater villas & island exploration. Book your luxury escape today.',
     keywords: 'maldives group trip from india, maldives trip june 2026, hanifaru bay manta ray trip, baa atoll maldives, maldives package from chennai',
     alternates: {
         canonical: 'https://travexventures.com/maldives-group-trip-from-india'

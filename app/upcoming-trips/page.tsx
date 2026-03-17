@@ -5,7 +5,7 @@ import UpcomingTripsClient from './UpcomingTripsClient';
 
 export const metadata: Metadata = {
     title: 'Upcoming Group Trips 2025–2026 | Travexventures',
-    description: 'Browse upcoming curated group adventure trips to Maldives, Sri Lanka & beyond. Small groups, expert guides, limited spots. Book from India.',
+    description: 'Explore upcoming group trips from India to Maldives, Sri Lanka & beyond. Reserve your spot for curated luxury journeys and unforgettable adventures.',
     alternates: {
         canonical: 'https://travexventures.com/upcoming-trips'
     }

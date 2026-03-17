@@ -16,9 +16,8 @@ import type { Metadata } from 'next';
  * - Twitter: https://cards-dev.twitter.com/validator
  */
 export const metadata: Metadata = {
-    title: 'Luxury Maldives & Sri Lanka Trips from India | Travex Ventures',
-    description:
-        'Curated luxury group journeys and private escapes to the Maldives and Sri Lanka. Book exclusive Maldives manta ray trips, sandbank adventures, and cultural experiences.',
+    title: 'Luxury Maldives & Sri Lanka Trips | Travex Ventures',
+    description: 'Discover luxury Maldives & Sri Lanka group trips from India. Curated experiences with premium accommodation and exclusive activities. Book now.',
     openGraph: {
         title: 'Luxury Maldives & Sri Lanka Trips from India | Travex Ventures',
         description:

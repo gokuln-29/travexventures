@@ -5,7 +5,7 @@ import { Mail, Phone, MessageCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Contact Travexventures — Plan Your Custom Trip',
-    description: 'Get in touch with Travexventures to plan your dream adventure or honeymoon. Custom itineraries, group trips, expert guidance. WhatsApp or email us today.',
+    description: 'Book your Maldives trip from India with Travex Ventures. Get expert travel consultation & customize your luxury island getaway effortlessly.',
     alternates: {
         canonical: 'https://travexventures.com/contact'
     }

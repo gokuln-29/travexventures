@@ -7,7 +7,7 @@ import ArticleList from '@/components/ArticleList';
 
 export const metadata: Metadata = {
     title: 'Travel Insights & Guides | Travexventures Blog',
-    description: 'Expert travel guides, hidden gems, and stories from the road. Discover curated tips for Maldives, Sri Lanka, and luxury adventures worldwide.',
+    description: 'Read expert Maldives travel guides for Indian travelers. Discover tips, itineraries & insider advice for planning your luxury island getaway.',
     alternates: {
         canonical: 'https://travexventures.com/blog'
     }

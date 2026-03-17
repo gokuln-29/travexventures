@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Users, MapPin, Clock, Check, X, ChevronDown, Download } from 'lucide-react';
 import CTASection from '@/components/CTASection';
+import SchemaScript from '@/components/SchemaScript';
 
 export const metadata: Metadata = {
     title: 'Maldives Group Trip from India 2026 — Hanifaru Bay Manta Rays | Travexventures',
@@ -47,17 +48,97 @@ const itinerary = [
 ];
 
 export default function MaldivesTripPage() {
+    const touristTripSchema = {
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
+        "name": "Maldives Hanifaru Bay Manta Ray Expedition",
+        "description": "Experience the world's greatest manta ray gathering at Hanifaru Bay UNESCO Biosphere Reserve. 5-day exclusive luxury trip with marine biologist, private dhoni, sandbank picnic, and authentic island culture.",
+        "startDate": "2026-06-24",
+        "endDate": "2026-06-28",
+        "duration": "P5D",
+        "touristType": "Group",
+        "url": "https://travexventures.com/maldives-group-trip-from-india",
+        "itinerary": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Arrival & Welcome to Paradise",
+                    "description": "Transfer via scenic domestic flight and speedboat to your luxury boutique island in Baa Atoll. Evening welcome dinner on the beach under the stars."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Hanifaru Bay Manta Expedition",
+                    "description": "Snorkel alongside hundreds of giant mantas at the world's largest manta ray feeding station with a marine biologist guide."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Sandbank Picnic & Local Island Visit",
+                    "description": "Private BBQ lunch on deserted sandbank and visit to authentic Maldivian fishing village."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 4,
+                    "name": "Coral Reef Snorkeling & Sunset Cruise",
+                    "description": "Explore vibrant house reefs and watch playful dolphins on a traditional sunset dhoni cruise."
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 5,
+                    "name": "Farewell & Departure",
+                    "description": "Final morning swim in crystal clear lagoon before transfer back to Male International Airport."
+                }
+            ]
+        },
+        "location": {
+            "@type": "Place",
+            "name": "Baa Atoll, Maldives",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "MV",
+                "addressRegion": "Baa Atoll"
+            }
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "90000",
+            "priceCurrency": "INR",
+            "availability": "LimitedAvailability",
+            "availabilityEnds": "2026-06-24",
+            "url": "https://travexventures.com/contact",
+            "description": "Luxury accommodation, all meals, private boat excursions, marine biologist guide, airport transfers included. Limited to 12 travelers."
+        },
+        "provider": {
+            "@type": "TravelAgency",
+            "name": "Travex Ventures",
+            "telephone": "+919047033448",
+            "url": "https://travexventures.com"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "200"
+        }
+    };
+
     return (
         <div className="bg-brand-black min-h-screen relative">
+            <SchemaScript schema={touristTripSchema} />
 
             {/* HERO SECTION */}
             <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
                 <Image
                     src="/upcoming_trips/poster-2.jpg"
-                    alt="Maldives Hanifaru Bay"
+                    alt="Maldives Hanifaru Bay manta ray snorkeling UNESCO biosphere reserve Baa Atoll"
                     fill
                     className="object-cover"
-                    priority
+                    priority={true}
+                    fetchPriority="high"
+                    quality={85}
+                    sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-brand-black/95 via-brand-black/60 to-brand-black/20" />
 
@@ -175,7 +256,14 @@ export default function MaldivesTripPage() {
                                             <p className="text-brand-cream/60 leading-relaxed text-[15px]">{day.desc}</p>
                                         </div>
                                         <div className="w-full lg:w-[250px] aspect-video lg:aspect-square relative overflow-hidden rounded-[2px] shrink-0">
-                                            <Image src={day.image} alt={day.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                                            <Image 
+                                                src={day.image} 
+                                                alt={`${day.title} - Maldives group trip day ${day.day} experience`}
+                                                fill 
+                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                quality={85}
+                                                sizes="(max-width: 1024px) 100vw, 250px"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +322,14 @@ export default function MaldivesTripPage() {
                         <span className="font-accent text-[11px] uppercase tracking-[0.3em] text-brand-gold block mb-8">— The Guides —</span>
                         <div className="flex flex-col md:flex-row gap-12 bg-brand-card p-10 border border-brand-gold/10 rounded-[2px] items-center">
                             <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shrink-0 border-2 border-brand-gold/50 shadow-[0_0_30px_rgba(201,168,76,0.15)]">
-                                <Image src="/founder.png" alt="Karthikeyan" fill className="object-cover" />
+                                <Image 
+                                    src="/founder.png" 
+                                    alt="Karthikeyan founder expedition leader marine biologist Maldives expert"
+                                    fill 
+                                    className="object-cover"
+                                    quality={90}
+                                    sizes="(max-width: 768px) 200px, 256px"
+                                />
                             </div>
                             <div>
                                 <h3 className="font-serif text-3xl text-brand-cream mb-2">Karthikeyan</h3>
@@ -293,7 +388,14 @@ export default function MaldivesTripPage() {
 
             {/* Final CTA Full Width */}
             <section className="relative py-40 overflow-hidden reveal">
-                <Image src="/Trips/3.png" alt="Maldives Ocean" fill className="object-cover" />
+                <Image 
+                    src="/Trips/3.png" 
+                    alt="Crystal clear turquoise waters Maldives ocean lagoon snorkeling destination"
+                    fill 
+                    className="object-cover"
+                    quality={85}
+                    sizes="100vw"
+                />
                 <div className="absolute inset-0 bg-brand-black/80" />
                 <div className="absolute inset-0 bg-linear-to-t from-brand-black to-transparent" />
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">

@@ -49,9 +49,10 @@ export default function BlogPage() {
                         <div className="relative aspect-video w-full overflow-hidden">
                             <Image 
                                 src={featuredArticle.image} 
-                                alt={featuredArticle.title} 
+                                alt={`${featuredArticle.title} - ${featuredArticle.category} travel guide featured article`}
                                 fill 
                                 className="object-cover transition-transform duration-800 group-hover:scale-105"
+                                quality={85}
                                 sizes="(max-width: 1024px) 100vw, 70vw"
                             />
                             <div className="absolute inset-0 bg-linear-to-t from-brand-black via-brand-black/40 to-transparent" />
@@ -135,7 +136,14 @@ export default function BlogPage() {
 
                     {/* Plan Your Trip CTA */}
                     <div className="overflow-hidden aspect-4/5 rounded-[2px] flex flex-col justify-end p-8 mt-auto sticky top-32">
-                        <Image src="/banner/two.jpg" alt="Plan Your Trip" fill className="object-cover" />
+                        <Image 
+                            src="/banner/two.jpg" 
+                            alt="Plan your luxury group trip custom itinerary Travex Ventures"
+                            fill 
+                            className="object-cover"
+                            quality={85}
+                            sizes="(max-width: 1024px) 100vw, 30vw"
+                        />
                         <div className="absolute inset-0 bg-linear-to-t from-brand-black via-brand-black/70 to-transparent" />
                         <div className="relative z-10 text-center">
                             <h4 className="font-serif text-3xl text-brand-cream leading-tight mb-4">Inspired to Travel?</h4>

@@ -64,9 +64,10 @@ export default function BlogInsights() {
                     >
                         <Image
                             src={featured.image}
-                            alt={featured.title}
+                            alt={`${featured.title} - ${featured.category} featured travel guide`}
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            quality={85}
                             sizes="(max-width: 1024px) 100vw, 50vw"
                         />
                         <div className="absolute inset-0 bg-linear-to-t from-brand-black via-brand-black/40 to-transparent" />
@@ -96,9 +97,10 @@ export default function BlogInsights() {
                             <div className="relative aspect-video overflow-hidden">
                                 <Image
                                     src={article.image}
-                                    alt={article.title}
+                                    alt={`${article.title} - ${article.category} travel article`}
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    quality={85}
                                     sizes="(max-width: 1024px) 100vw, 50vw"
                                 />
                             </div>

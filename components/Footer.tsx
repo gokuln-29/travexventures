@@ -25,10 +25,10 @@ export default function Footer() {
                     <Link href="/" className="relative group mb-8">
                         <Image
                             src="/logo.png"
-                            alt="Travex Ventures"
+                            alt="Travex Ventures luxury travel group trips adventure logo"
                             width={500}
                             height={500}
-                            quality={100}
+                            quality={90}
                             className="w-auto h-20 md:h-28 object-contain drop-shadow-[0_0_3px_rgba(253,251,247,0.7)] hover:scale-105 transition-all duration-300 relative z-10"
                         />
                     </Link>

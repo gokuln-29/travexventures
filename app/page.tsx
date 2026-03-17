@@ -5,10 +5,40 @@ import TripsGrid from '@/components/TripsGrid';
 import Testimonials from '@/components/Testimonials';
 import BlogInsights from '@/components/BlogInsights';
 import CTASection from '@/components/CTASection';
+import SchemaScript from '@/components/SchemaScript';
 
 export default function Home() {
+    const travelAgencySchema = {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Travex Ventures",
+        "description": "Curated luxury group journeys and private escapes to the Maldives and Sri Lanka. Bespoke travel experiences for those who seek extraordinary adventures.",
+        "url": "https://travexventures.com",
+        "telephone": "+919047033448",
+        "email": "info@travexventures.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "IN",
+            "addressRegion": "Tamil Nadu"
+        },
+        "founder": {
+            "@type": "Person",
+            "name": "Karthikeyan"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "500"
+        },
+        "sameAs": [
+            "https://www.instagram.com/travexventures/",
+            "https://www.facebook.com/travexventures/"
+        ]
+    };
+
     return (
         <div className="bg-brand-black min-h-screen">
+            <SchemaScript schema={travelAgencySchema} />
             <Hero />
 
             {/* STATS ROW (after hero) */}

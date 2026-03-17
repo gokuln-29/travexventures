@@ -44,12 +44,12 @@ export default function Navbar() {
                             <div className="w-24 lg:w-32" />
                             <Image
                                 src="/logo.png"
-                                alt="Travex Ventures"
+                                alt="Travex Ventures luxury travel adventures group trips logo"
                                 width={500}
                                 height={500}
-                                quality={100}
+                                quality={90}
                                 className="absolute top-2 lg:top-4 left-0 w-auto h-[120px] lg:h-[160px] object-contain drop-shadow-[0_0_3px_rgba(253,251,247,0.7)] hover:scale-105 transition-all duration-300"
-                                priority
+                                priority={true}
                             />
                         </Link>
 

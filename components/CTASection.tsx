@@ -7,10 +7,11 @@ export default function CTASection() {
             {/* Full-width image at natural aspect ratio — no cropping */}
             <Image
                 src="/banner/two.jpg"
-                alt="Cinematic ocean sunset — contact Travex Ventures"
+                alt="Cinematic tropical ocean sunset paradise travel inspiration Travex Ventures"
                 width={1920}
                 height={1080}
                 className="w-full h-auto block"
+                quality={85}
                 sizes="100vw"
             />
 

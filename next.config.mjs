@@ -5,8 +5,22 @@ const nextConfig = {
     // Remove this line when deploying to Vercel or any Node.js host.
     output: 'export',
     images: {
-        unoptimized: true,
-        qualities: [75, 100],
+        unoptimized: true, // Required for static export
+        qualities: [75, 85, 90, 100],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'travexventures.vercel.app',
+            },
+            {
+                protocol: 'https',
+                hostname: '**.travexventures.com',
+            },
+        ],
     },
     serverExternalPackages: ['nodemailer'], // Prevent Turbopack from bundling nodemailer
 };

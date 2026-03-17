@@ -14,9 +14,10 @@ export default function Features() {
                         <div className="relative overflow-hidden aspect-3/4" style={{ borderRadius: '2px' }}>
                             <Image
                                 src="/founder.png"
-                                alt="Karthikeyan — Founder of Travex Ventures, luxury travel expert with 15+ years in hospitality"
+                                alt="Karthikeyan founder CEO Travex Ventures luxury travel expert hospitality professional"
                                 fill
                                 className="object-cover"
+                                quality={90}
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                             {/* Subtle gradient overlay at bottom */}

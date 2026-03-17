@@ -24,10 +24,13 @@ export default function PageHero({ title, breadcrumbName, bgImage, subtext }: Pa
             {/* Background Image */}
             <Image
                 src={bgImage}
-                alt={title}
+                alt={`${title} ${breadcrumbName} page hero banner Travex Ventures luxury travel`}
                 fill
                 className={`object-cover transition-all duration-1000 ease-out ${loaded ? 'scale-100 blur-none' : 'scale-105 blur-sm'}`}
-                priority
+                priority={true}
+                fetchPriority="high"
+                quality={85}
+                sizes="100vw"
             />
 
             {/* Dark gradient overlay (bottom 70% opacity) */}

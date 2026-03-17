@@ -21,12 +21,14 @@ export default function AboutPage() {
             <section className="relative overflow-hidden">
                 <Image
                     src="/banner/four.jpg"
-                    alt="Our Story — Travex Ventures"
+                    alt="Travex Ventures about us story luxury travel experiences"
                     width={1920}
                     height={1080}
                     className="w-full h-auto block"
                     sizes="100vw"
-                    priority
+                    priority={true}
+                    fetchPriority="high"
+                    quality={85}
                 />
 
                 {/* Dark overlays */}

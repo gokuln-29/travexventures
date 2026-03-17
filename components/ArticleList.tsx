@@ -48,9 +48,10 @@ export default function ArticleList({ allArticles }: ArticleListProps) {
                         <div className="relative aspect-4/3 w-full overflow-hidden">
                             <Image
                                 src={article.image}
-                                alt={article.title}
+                                alt={`${article.title} - ${article.category} travel guide article`}
                                 fill
                                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                quality={85}
                                 sizes="(max-width: 768px) 100vw, 33vw"
                             />
                             <div className="absolute top-4 left-4 font-accent text-[9px] uppercase tracking-[0.3em] text-brand-black bg-brand-gold px-2 py-1 rounded-[2px] z-10 shadow-md">

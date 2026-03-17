@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronRight, Calendar } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { blogs } from '@/data/allBlogs';
+import SchemaScript from '@/components/SchemaScript';
 
 export function generateStaticParams() {
     return blogs.map((post) => ({
@@ -93,10 +94,79 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         ]
     };
 
+    // Generate FAQPage schema for Maldives-related blog posts
+    let faqSchema = null;
+    const faqLists: { [key: string]: { question: string; answer: string }[] } = {
+        'best-maldives-trip-from-india-complete-travel-guide': [
+            {
+                question: 'What is the best Maldives trip from India?',
+                answer: 'The best trip is a pre-packaged group or customized tour that covers flights, transfers, half-board meals, and excursions like snorkeling and sandbank visits.'
+            },
+            {
+                question: 'How much does a Maldives trip cost?',
+                answer: 'A local island group trip generally costs between ₹60,000 and ₹85,000 per person from India.'
+            },
+            {
+                question: 'What is the best time to visit Maldives?',
+                answer: 'November to April offers the best beach weather, while June to November is best for seeing manta rays.'
+            },
+            {
+                question: 'Is Maldives good for honeymoon?',
+                answer: 'Yes, it is the world\'s premier honeymoon destination, offering private villas, romantic dinners, and ultimate seclusion.'
+            },
+            {
+                question: 'Do Indians need a visa for the Maldives?',
+                answer: 'No, Indian passport holders get a free 30-day tourist visa on arrival.'
+            },
+            {
+                question: 'Are vegetarian options available?',
+                answer: 'Absolutely. Due to the high number of Indian tourists, vegetarian and Indian foods are widely available.'
+            }
+        ],
+        'hanifaru-bay-manta-ray-experience-guide': [
+            {
+                question: 'What is the best Maldives trip from India?',
+                answer: 'The best trips balance relaxation with incredible wildlife encounters, such as all-inclusive packages to Baa Atoll during manta ray season.'
+            },
+            {
+                question: 'How much does a Maldives trip cost?',
+                answer: 'A well-structured group trip based in Dharavandhoo for manta ray season generally runs ₹65,000–₹85,000 per person from India.'
+            },
+            {
+                question: 'What is the best time to visit Maldives?',
+                answer: 'For perfect weather, November–April. For Hanifaru Bay manta rays, June–November is mandatory.'
+            },
+            {
+                question: 'Is Maldives good for honeymoon?',
+                answer: 'Absolutely. If you want an adventurous honeymoon, combining luxury with a manta ray excursion is unforgettable.'
+            },
+            {
+                question: 'Are there sharks at Hanifaru Bay?',
+                answer: 'Yes, you may often see enormous (but harmless) whale sharks feeding alongside the manta rays!'
+            }
+        ]
+    };
+
+    if (faqLists[slug]) {
+        faqSchema = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqLists[slug].map((faq) => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                }
+            }))
+        };
+    }
+
     return (
         <article className="bg-earth-light min-h-screen py-24 px-4 font-sans">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+            {faqSchema && <SchemaScript schema={faqSchema} />}
 
             <div className="max-w-4xl mx-auto">
                 <nav className="flex items-center text-sm font-medium text-navy-500 mb-8 max-w-4xl mx-auto">
@@ -123,10 +193,13 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 <div className="relative w-full h-80 md:h-[500px] mb-12 rounded-3xl overflow-hidden shadow-lg border border-navy-50/20">
                     <Image
                         src={post.featuredImage}
-                        alt={post.title}
+                        alt={`${post.title} - Travex Ventures travel guide blog`}
                         fill
                         className="object-cover hover:scale-105 transition-transform duration-1000"
-                        priority
+                        priority={true}
+                        fetchPriority="high"
+                        quality={85}
+                        sizes="(max-width: 768px) 100vw, 90vw"
                     />
                 </div>
 

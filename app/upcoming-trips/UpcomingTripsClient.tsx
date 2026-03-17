@@ -54,9 +54,11 @@ export default function UpcomingTripsClient({ trips }: { trips: Trip[] }) {
                         <div className="relative w-full lg:w-[45%] aspect-video lg:aspect-auto min-h-[300px] lg:min-h-full overflow-hidden">
                             <Image
                                 src={trip.image}
-                                alt={trip.title}
+                                alt={`${trip.title} - ${trip.destination} ${trip.dates} luxury group trip`}
                                 fill
                                 className={`object-cover transition-transform duration-600 ease-out group-hover:scale-[1.05] ${trip.soldOut ? 'grayscale opacity-70' : ''}`}
+                                quality={85}
+                                sizes="(max-width: 1024px) 100vw, 45vw"
                             />
                             {trip.soldOut && (
                                 <div className="absolute top-4 left-4 bg-green-600/90 backdrop-blur-sm px-4 py-2 font-accent text-[10px] uppercase tracking-[0.25em] text-white">

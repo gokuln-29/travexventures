@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Hero() {
@@ -22,13 +23,27 @@ export default function Hero() {
 
     return (
         <section id="hero" className="relative h-screen min-h-[700px] overflow-hidden bg-brand-black">
-            {/* Background Video */}
+            {/* Background Images - Auto-rotating */}
             <div className="absolute inset-0 w-full h-full overflow-hidden">
-                <img
-                    src={images[imageIndex]}
-                    alt="Hero Background"
-                    className="w-full h-full object-cover transition-opacity duration-1000"
-                />
+                {images.map((img, idx) => (
+                    <div
+                        key={idx}
+                        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+                            idx === imageIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    >
+                        <Image
+                            src={img}
+                            alt={`Travex adventures banner ${idx + 1} of ${images.length}`}
+                            fill
+                            priority={idx === 0}
+                            fetchPriority={idx === 0 ? 'high' : 'low'}
+                            className="object-cover"
+                            quality={85}
+                            sizes="100vw"
+                        />
+                    </div>
+                ))}
             </div>
 
             {/* Dark overlay — 60% bottom-heavy gradient */}

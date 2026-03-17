@@ -64,9 +64,10 @@ export default function UpcomingTrips() {
                             <div className={`relative lg:col-span-3 min-h-[350px] lg:min-h-[500px] ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
                                 <Image
                                     src={trip.image}
-                                    alt={trip.title}
+                                    alt={`${trip.title} - ${trip.destination} luxury group trip Travex Ventures`}
                                     fill
                                     className="object-cover"
+                                    quality={85}
                                     sizes="(max-width: 1024px) 100vw, 60vw"
                                 />
                                 <div className="absolute inset-0 bg-linear-to-r from-brand-card/60 via-transparent to-transparent lg:hidden" />
